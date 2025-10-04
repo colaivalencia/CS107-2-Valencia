@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Faker\Provider\bg_BG\PhoneNumber;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -17,14 +19,20 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
+
         $firstName = $this->faker->firstName;
         $lastName = $this->faker->lastName;
         $contact = $this->faker->phoneNumber();
         return [
-            'first_name' => substr($firstName, 0, 30),
-            'last_name' => substr($lastName, 0, 30),
-            'contact' => substr($contact, 0, 15),
-            'address' => fake()->address(),
+            'username' => $this->faker->unique()->userName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'password_hash' => Hash::make('password123'), // Default password for all customers
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'date_of_birth' => $this->faker->date(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'created_at' => now()
         ];
     }
 }
