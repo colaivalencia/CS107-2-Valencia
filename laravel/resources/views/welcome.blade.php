@@ -18,7 +18,7 @@
         @endif
     </head>
     <body>
-        <h1>WELCOME</h1>
+        <h1>Welcome to Laravel</h1>
         
     </body>
 </html>
