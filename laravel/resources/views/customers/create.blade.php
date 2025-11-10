@@ -1,5 +1,6 @@
 <div>
-    <form action="/customers" method="POST">
+    <!-- He who is contented is rich. - Laozi -->
+    <form action={{ route('customer.store') }} method="POST">
         @csrf
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
